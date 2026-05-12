@@ -2,20 +2,20 @@
 
 LibraFlow is a modern full-stack Library Management System built with Java Spring Boot (Backend) and HTML/CSS/JavaScript with Bootstrap 5 (Frontend). It provides robust functionality to manage books, members, and book issues with real-time validations.
 
-## 🚀 Features
+##  Features
 - **Book Management:** Add, list, search, and delete books.
 - **Member Management:** Register and manage library members.
 - **Issue/Return Books:** Issue up to 3 books per member, prevent duplicate issues, and handle returns dynamically.
 - **Beautiful Dashboard:** View real-time statistics and recently issued books on a responsive, beautifully styled dashboard.
 
-## 🛠️ Technology Stack
+##  Technology Stack
 - **Backend:** Java 17, Spring Boot 3, Spring Data JPA, Hibernate.
 - **Database:** MySQL.
 - **Frontend:** HTML5, CSS3 (Custom Glassmorphism), JavaScript (Fetch API), Bootstrap 5.
 
 ---
 
-## 🏃‍♂️ How to Run Locally
+##  How to Run Locally
 
 ### 1. Prerequisites
 - Java 17+ installed
@@ -47,7 +47,7 @@ Open your browser and navigate to:
 
 ---
 
-## 🤝 GitHub Collaboration Guide (4 Members)
+##  GitHub Collaboration Guide (4 Members)
 
 To collaborate smoothly, create a GitHub repository and follow this structure.
 
@@ -91,7 +91,7 @@ git push origin feature/ui-integration
 
 ---
 
-## 📚 API Reference
+##  API Reference
 
 | Method | Endpoint | Description |
 |--------|----------|-------------|

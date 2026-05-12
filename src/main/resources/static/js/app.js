@@ -133,7 +133,7 @@ function handleSearch(query) {
 function openAddBook() {
   document.getElementById('bookForm').reset();
   document.getElementById('bookId').value = '';
-  new bootstrap.Modal(document.getElementById('bookModal')).show();
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('bookModal')).show();
 }
 
 async function saveBook(e) {
@@ -147,7 +147,7 @@ async function saveBook(e) {
       body: JSON.stringify({ title, author, availability: true })
     });
     if (res.ok) {
-      bootstrap.Modal.getInstance(document.getElementById('bookModal')).hide();
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('bookModal')).hide();
       showAlert('Book added successfully');
       fetchBooks();
     } else {
@@ -214,7 +214,7 @@ async function fetchMembers() {
 function openAddMember() {
   document.getElementById('memberForm').reset();
   document.getElementById('memberId').value = '';
-  new bootstrap.Modal(document.getElementById('memberModal')).show();
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('memberModal')).show();
 }
 
 async function saveMember(e) {
@@ -228,7 +228,7 @@ async function saveMember(e) {
       body: JSON.stringify({ name, email })
     });
     if (res.ok) {
-      bootstrap.Modal.getInstance(document.getElementById('memberModal')).hide();
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('memberModal')).hide();
       showAlert('Member added successfully');
       fetchMembers();
     } else {
@@ -296,7 +296,7 @@ async function fetchActiveIssues() {
 function openIssueModal() {
   loadMembersForSelect();
   loadBooksForSelect();
-  new bootstrap.Modal(document.getElementById('issueModal')).show();
+  bootstrap.Modal.getOrCreateInstance(document.getElementById('issueModal')).show();
 }
 
 async function loadMembersForSelect() {
@@ -345,7 +345,7 @@ async function handleIssueSubmit(e) {
     });
     
     if (res.ok) {
-      bootstrap.Modal.getInstance(document.getElementById('issueModal')).hide();
+      bootstrap.Modal.getOrCreateInstance(document.getElementById('issueModal')).hide();
       showAlert('Book issued successfully!');
       if (document.getElementById('issuesTbody')) fetchActiveIssues();
     } else {
@@ -361,7 +361,7 @@ async function returnBook(issueId) {
   try {
     const res = await fetch(`/issues/return/${issueId}`, { method: 'PUT' });
     if (res.ok) {
-      showAlert('Book returned successfully!');
+      // Refresh without showing a popup message
       fetchActiveIssues();
     } else {
       showAlert('Failed to return book', 'danger');

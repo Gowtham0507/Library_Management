@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LibraFlow – Dashboard</title>
+  <meta name="description" content="LibraFlow Library Management System – Dashboard" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <div class="d-flex align-items-center gap-2">
+        <div class="brand-icon"><i class="fas fa-book-open" style="color:white;font-size:1rem;"></i></div>
+        <span class="brand-name">LibraFlow</span>
+      </div>
+      <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:4px;padding-left:2px;">Library Management System</div>
+    </div>
+
+    <div class="sidebar-nav">
+      <div class="nav-label">Main Menu</div>
+      <div class="nav-item">
+        <a href="index.html" class="nav-link-custom active-nav" id="link-dashboard">
+          <div class="nav-icon"><i class="fas fa-chart-pie"></i></div>
+          <span>Dashboard</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="books.html" class="nav-link-custom" id="link-books">
+          <div class="nav-icon"><i class="fas fa-book"></i></div>
+          <span>Books</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="members.html" class="nav-link-custom" id="link-members">
+          <div class="nav-icon"><i class="fas fa-users"></i></div>
+          <span>Members</span>
+        </a>
+      </div>
+      <div class="nav-item">
+        <a href="issues.html" class="nav-link-custom" id="link-issues">
+          <div class="nav-icon"><i class="fas fa-exchange-alt"></i></div>
+          <span>Issue / Return</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="topbar-avatar" style="width:34px;height:34px;font-size:0.75rem;">AD</div>
+        <div class="sidebar-user-info">
+          <h6>Admin User</h6>
+          <span>Administrator</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div id="content">
+    <div class="topbar">
+      <div class="d-flex align-items-center gap-3">
+        <button id="sidebarToggle" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+        <div>
+          <div class="topbar-title">Dashboard</div>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <button class="topbar-btn"><i class="fas fa-bell"></i><span class="notif-dot"></span></button>
+        <div class="topbar-avatar">AD</div>
+      </div>
+    </div>
+
+    <div class="page-content">
+      <div class="page-header">
+        <div>
+          <h2>Welcome back, Admin! 👋</h2>
+          <p id="currentDate" style="color:#94a3b8;font-size:0.85rem;margin-top:4px;"></p>
+        </div>
+        <a href="issues.html" class="btn-primary-custom">
+          <i class="fas fa-plus"></i> Issue Book
+        </a>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-grid" id="statsContainer">
+        <div class="stat-card purple">
+          <div class="stat-icon"><i class="fas fa-book"></i></div>
+          <div class="stat-value" id="totalBooks">–</div>
+          <div class="stat-label">Total Books</div>
+          <div class="stat-trend neutral"><i class="fas fa-layer-group"></i> In library catalog</div>
+        </div>
+        <div class="stat-card teal">
+          <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+          <div class="stat-value" id="availableBooks">–</div>
+          <div class="stat-label">Available Books</div>
+          <div class="stat-trend up"><i class="fas fa-arrow-up"></i> Ready to issue</div>
+        </div>
+        <div class="stat-card orange">
+          <div class="stat-icon"><i class="fas fa-clock"></i></div>
+          <div class="stat-value" id="totalIssues">–</div>
+          <div class="stat-label">Active Issues</div>
+          <div class="stat-trend neutral"><i class="fas fa-exchange-alt"></i> Currently issued</div>
+        </div>
+        <div class="stat-card rose">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div class="stat-value" id="totalMembers">–</div>
+          <div class="stat-label">Total Members</div>
+          <div class="stat-trend up"><i class="fas fa-user-plus"></i> Registered members</div>
+        </div>
+      </div>
+
+      <!-- Recent Issues Table -->
+      <div class="card-premium">
+        <div class="card-header-premium">
+          <div>
+            <h5><i class="fas fa-history me-2" style="color:#6C63FF;"></i>Recent Active Issues</h5>
+          </div>
+          <a href="issues.html" class="btn-outline-custom"><i class="fas fa-arrow-right"></i> View All</a>
+        </div>
+        <div class="card-body-premium">
+          <table class="table-premium w-100" id="recentIssuesTable">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Book</th>
+                <th>Member</th>
+                <th>Issue Date</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="recentTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/app.js"></script>
+<script>
+  document.getElementById('currentDate').textContent = new Date().toLocaleDateString('en-IN', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  document.addEventListener('DOMContentLoaded', loadDashboardStats);
+</script>
+</body>
+</html>
